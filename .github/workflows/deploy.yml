@@ -21,16 +21,3 @@ jobs:
         run: |
           rsync -az --delete -e "ssh -o StrictHostKeyChecking=no" \
             dist/ ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:${{ secrets.TARGET_DIR }}/
-      - name: Ensure SPA rewrite
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }} \
-            "if [ ! -f ${{ secrets.TARGET_DIR }}/.htaccess ]; then \
-              cat > ${{ secrets.TARGET_DIR }}/.htaccess << 'HT'
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
-HT
-            fi"
