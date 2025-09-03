@@ -31,3 +31,14 @@ jobs:
       
     - name: Run type check
       run: yarn tsc --noEmit
+      
+    - name: Build Storybook for Chromatic
+      run: yarn build-storybook
+      
+    - name: Run Chromatic
+      uses: chromaui/action@latest
+      with:
+        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        workingDir: ./
+        buildScriptName: build-storybook
+        exitZeroOnChanges: true

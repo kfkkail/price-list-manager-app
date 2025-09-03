@@ -37,17 +37,6 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Available Scripts
-```bash
-yarn dev          # Start development server
-yarn build        # Build for production
-yarn preview      # Preview production build
-yarn lint         # Run ESLint
-yarn test         # Run tests
-yarn test:watch   # Run tests in watch mode
-yarn test:coverage # Run tests with coverage report
-```
-
 ## 📁 Project Structure
 ```
 src/
@@ -72,7 +61,20 @@ src/
 
 ## 🧪 Testing
 
-This project includes comprehensive unit testing with Jest and React Testing Library:
+This project uses Jest and React Testing Library for unit testing, along with Chromatic for visual regression testing.
+
+### Unit Testing
+
+```bash
+# Run tests in watch mode
+yarn test
+
+# Run tests with coverage
+yarn test:coverage
+
+# Run tests for CI
+yarn test:ci
+```
 
 ### Test Coverage
 - **App Component** - Routing and component integration tests
@@ -80,32 +82,40 @@ This project includes comprehensive unit testing with Jest and React Testing Lib
 - **Main Entry Point** - App initialization and provider setup tests
 - **Test Utilities** - Reusable testing functions and providers
 
-### Running Tests
-```bash
-# Run all tests
-yarn test
-
-# Run tests in watch mode (development)
-yarn test:watch
-
-# Run tests with coverage report
-yarn test:coverage
-
-# Run tests for CI/CD
-yarn test:ci
-```
-
 ### Test Structure
 - **Component Tests** - Verify rendering, props, and user interactions
 - **Integration Tests** - Test component interactions and routing
 - **Accessibility Tests** - Ensure proper ARIA attributes and semantic HTML
 - **Utility Tests** - Test helper functions and custom hooks
 
-### Testing Tools
-- **Jest** - Test runner and assertion library
-- **React Testing Library** - Component testing utilities
-- **Jest DOM** - Custom DOM element matchers
-- **TypeScript** - Type-safe testing with full IntelliSense
+### Visual Testing with Chromatic
+
+This project uses [Chromatic](https://www.chromatic.com/) for visual regression testing, which automatically captures screenshots of your components and detects visual changes.
+
+#### How It Works
+
+- **Automatic Testing:** Every PR automatically runs Chromatic to capture visual snapshots
+- **Visual Regression Detection:** Chromatic compares screenshots across commits to detect unintended visual changes
+- **Cross-Browser Testing:** Tests across multiple browsers and viewports
+- **Accessibility Testing:** Built-in accessibility checks for each component
+
+#### Storybook Stories
+
+Components are documented and tested using Storybook stories:
+
+```bash
+# View stories locally
+yarn storybook
+
+# Build stories for production
+yarn build-storybook
+```
+
+Stories are located in `src/**/*.stories.tsx` files and provide:
+- Component documentation
+- Interactive examples
+- Visual testing scenarios
+- Accessibility testing
 
 ## 🔗 Links
 - **GitHub**: [kfkkail/price-list-manager-app](https://github.com/kfkkail/price-list-manager-app)

@@ -1,0 +1,27 @@
+{
+  "projectToken": "${CHROMATIC_PROJECT_TOKEN}",
+  "buildScriptName": "build-storybook",
+  "storybookBuildDir": "storybook-static",
+  "exitZeroOnChanges": true,
+  "autoAcceptChanges": false,
+  "interactive": false,
+  "exitOnceUploaded": true,
+  "uploadOnly": false,
+  "preserveMissingSpecs": true,
+  "diffThreshold": 0.1,
+  "captureDelay": 1000,
+  "viewportSize": "1280x720",
+  "chromaticOptions": {
+    "buildScriptName": "build-storybook",
+    "storybookBuildDir": "storybook-static",
+    "exitZeroOnChanges": true,
+    "autoAcceptChanges": false,
+    "interactive": false,
+    "exitOnceUploaded": true,
+    "uploadOnly": false,
+    "preserveMissingSpecs": true,
+    "diffThreshold": 0.1,
+    "captureDelay": 1000,
+    "viewportSize": "1280x720"
+  }
+}
