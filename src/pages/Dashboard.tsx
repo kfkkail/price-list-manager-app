@@ -13,7 +13,6 @@ export const Dashboard: React.FC = () => {
               </h1>
               <p className="mt-1 text-sm text-gray-500">
                 Manage your product pricing efficiently
-                Chromatic Test
               </p>
             </div>
           </div>
