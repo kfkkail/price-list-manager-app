@@ -43,6 +43,9 @@ yarn dev          # Start development server
 yarn build        # Build for production
 yarn preview      # Preview production build
 yarn lint         # Run ESLint
+yarn test         # Run tests
+yarn test:watch   # Run tests in watch mode
+yarn test:coverage # Run tests with coverage report
 ```
 
 ## 📁 Project Structure
@@ -53,7 +56,9 @@ src/
 ├── pages/              # Route components
 ├── types/              # TypeScript definitions
 ├── App.tsx             # Main app component
-└── main.tsx            # Entry point
+├── main.tsx            # Entry point
+├── test-utils.tsx      # Testing utilities and providers
+└── setupTests.ts       # Jest test configuration
 ```
 
 ## 🎯 What This Project Demonstrates
@@ -63,6 +68,44 @@ src/
 - **Styling** - Tailwind CSS implementation
 - **Data Management** - TanStack Query setup
 - **Routing** - React Router implementation
+- **Testing** - Comprehensive Jest test coverage
+
+## 🧪 Testing
+
+This project includes comprehensive unit testing with Jest and React Testing Library:
+
+### Test Coverage
+- **App Component** - Routing and component integration tests
+- **Dashboard Component** - UI rendering and accessibility tests
+- **Main Entry Point** - App initialization and provider setup tests
+- **Test Utilities** - Reusable testing functions and providers
+
+### Running Tests
+```bash
+# Run all tests
+yarn test
+
+# Run tests in watch mode (development)
+yarn test:watch
+
+# Run tests with coverage report
+yarn test:coverage
+
+# Run tests for CI/CD
+yarn test:ci
+```
+
+### Test Structure
+- **Component Tests** - Verify rendering, props, and user interactions
+- **Integration Tests** - Test component interactions and routing
+- **Accessibility Tests** - Ensure proper ARIA attributes and semantic HTML
+- **Utility Tests** - Test helper functions and custom hooks
+
+### Testing Tools
+- **Jest** - Test runner and assertion library
+- **React Testing Library** - Component testing utilities
+- **Jest DOM** - Custom DOM element matchers
+- **TypeScript** - Type-safe testing with full IntelliSense
 
 ## 🔗 Links
 - **GitHub**: [kfkkail/price-list-manager-app](https://github.com/kfkkail/price-list-manager-app)

@@ -1,0 +1,9 @@
+# Yarn cache and build artifacts (don't save these)
+cache/
+unplugged/
+build-state.yml
+
+# Keep these important files
+!.yarnrc.yml
+!install-state.gz
+!.gitignore
