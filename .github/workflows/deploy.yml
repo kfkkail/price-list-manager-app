@@ -19,5 +19,5 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Upload dist
         run: |
-          rsync -az --delete -e "ssh -o StrictHostKeyChecking=no" \
+          rsync -az --delete --no-times --no-perms -e "ssh -o StrictHostKeyChecking=no" \
             dist/ ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:${{ secrets.TARGET_DIR }}/
