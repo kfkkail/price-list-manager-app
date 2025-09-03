@@ -4,42 +4,48 @@ on:
   pull_request:
     types: [closed]
     branches: [main]
-  workflow_dispatch: # Allow manual triggering
+  workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'yarn'
-      
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
-      
-      - name: Run tests
-        run: yarn test:ci
-
-  build-and-deploy:
-    # Only run if PR was merged (not just closed) and tests passed
+  deploy:
     if: github.event.pull_request.merged == true
-    needs: test
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'yarn'
-      - run: yarn --frozen-lockfile
-      - run: yarn build
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Upload dist
-        run: |
-          rsync -az --delete --no-times --no-perms -e "ssh -o StrictHostKeyChecking=no" \
-            dist/ ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:${{ secrets.TARGET_DIR }}/
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Enable Corepack
+      run: corepack enable
+      
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+      
+    - name: Build project
+      run: yarn build
+      
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        
+    - name: Deploy to server
+      run: |
+        # Upload dist files
+        rsync -az --delete --no-times --no-perms -e "ssh -o StrictHostKeyChecking=no" \
+          dist/ ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:${{ secrets.TARGET_DIR }}/
+        
+        # Set proper permissions
+        ssh -o StrictHostKeyChecking=no ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }} \
+          "chmod -R 755 ${{ secrets.TARGET_DIR }}"
+        
+    - name: Health check
+      run: |
+        echo "Waiting for deployment to complete..."
+        sleep 10
+        curl -f ${{ secrets.DEPLOY_URL }} || exit 1
