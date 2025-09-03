@@ -12,7 +12,6 @@ const meta: Meta<typeof Dashboard> = {
       }
     }
   },
-  tags: ['autodocs'],
   argTypes: {},
 }
 
@@ -21,42 +20,4 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {},
-}
-
-export const WithCustomTitle: Story = {
-  args: {},
-  parameters: {
-    docs: {
-      description: {
-        story: 'Dashboard with default styling and layout.'
-      }
-    }
-  }
-}
-
-// Story for testing responsive behavior
-export const Responsive: Story = {
-  args: {},
-  parameters: {
-    viewport: {
-      defaultViewport: 'mobile1',
-    },
-    docs: {
-      description: {
-        story: 'Dashboard viewed on mobile device to test responsive behavior.'
-      }
-    }
-  }
-}
-
-// Story for accessibility testing
-export const Accessibility: Story = {
-  args: {},
-  parameters: {
-    docs: {
-      description: {
-        story: 'Dashboard focused on accessibility features and screen reader support.'
-      }
-    }
-  }
 }

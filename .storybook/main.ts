@@ -1,5 +1,4 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
   "stories": [
@@ -7,26 +6,12 @@ const config: StorybookConfig = {
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
   "addons": [
-    "@chromatic-com/storybook",
-    "@storybook/addon-docs",
-    "@storybook/addon-onboarding",
-    "@storybook/addon-a11y",
-    "@storybook/addon-vitest"
+    "@chromatic-com/storybook"
   ],
   "framework": {
     "name": "@storybook/react-vite",
     "options": {}
-  },
-  "core": {
-    "disableTelemetry": true
-  },
-  "viteFinal": async (config) => {
-    return mergeConfig(config, {
-      css: {
-        postcss: './postcss.config.js',
-      },
-    });
-  },
+  }
 };
 
 export default config;
