@@ -24,7 +24,7 @@ jobs:
       run: corepack enable
       
     - name: Install dependencies
-      run: yarn install --frozen-lockfile
+      run: yarn install --immutable
       
     - name: Build project
       run: yarn build
@@ -39,10 +39,6 @@ jobs:
         # Upload dist files
         rsync -az --delete --no-times --no-perms -e "ssh -o StrictHostKeyChecking=no" \
           dist/ ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:${{ secrets.TARGET_DIR }}/
-        
-        # Set proper permissions
-        ssh -o StrictHostKeyChecking=no ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }} \
-          "chmod -R 755 ${{ secrets.TARGET_DIR }}"
         
     - name: Health check
       run: |
