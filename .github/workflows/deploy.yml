@@ -24,7 +24,8 @@ jobs:
       - name: Ensure SPA rewrite
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }} \
-            "if [ ! -f ${{ secrets.TARGET_DIR }}/.htaccess ]; then cat > ${{ secrets.TARGET_DIR }}/.htaccess <<'HT'
+            "if [ ! -f ${{ secrets.TARGET_DIR }}/.htaccess ]; then \
+              cat > ${{ secrets.TARGET_DIR }}/.htaccess << 'HT'
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.html$ - [L]
