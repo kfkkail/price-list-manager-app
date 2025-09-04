@@ -1,0 +1,19 @@
+import type { Preview } from '@storybook/react-vite'
+import React from 'react'
+import { ThemeProvider } from '../src/contexts/ThemeContext'
+import '../src/index.css'
+
+const preview: Preview = {
+  parameters: {},
+  decorators: [
+    (Story) => (
+      <ThemeProvider defaultTheme="light">
+        <div className="p-4">
+          <Story />
+        </div>
+      </ThemeProvider>
+    ),
+  ],
+};
+
+export default preview;
