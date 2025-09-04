@@ -39,6 +39,7 @@ export const ThemeToggle: React.FC = () => {
           <div
             className="fixed inset-0 z-10"
             onClick={() => setIsOpen(false)}
+            data-testid="theme-toggle-backdrop"
           />
           
           {/* Menu */}
