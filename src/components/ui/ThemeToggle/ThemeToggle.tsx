@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useTheme } from '../../contexts/ThemeContext'
+import { useTheme } from '../../../contexts/ThemeContext'
 import { clsx } from 'clsx'
 
 export const ThemeToggle: React.FC = () => {

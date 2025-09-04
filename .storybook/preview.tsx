@@ -4,10 +4,9 @@ import { ThemeProvider } from '../src/contexts/ThemeContext'
 import '../src/index.css'
 
 const preview: Preview = {
-  parameters: {},
   decorators: [
     (Story) => (
-      <ThemeProvider defaultTheme='light'>
+      <ThemeProvider defaultTheme="light">
         <div className="p-4">
           <Story />
         </div>

@@ -19,4 +19,4 @@ export { Card, CardHeader, CardBody, CardFooter } from './Layout/Card'
 export type { CardProps } from './Layout/Card'
 
 // Theme
-export { ThemeToggle } from './ThemeToggle'
+export { ThemeToggle } from './ThemeToggle/ThemeToggle'
