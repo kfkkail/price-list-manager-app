@@ -22,8 +22,8 @@ describe('Dashboard Component', () => {
     })
 
     it('shows welcome message and description', () => {
-      const welcomeTitle = screen.getByRole('heading', { level: 3 })
-      expect(welcomeTitle).toHaveTextContent('Welcome to your Dashboard')
+      const welcomeTitle = screen.getByText('Welcome to your Dashboard')
+      expect(welcomeTitle).toBeInTheDocument()
       
       const description = screen.getByText(
         "This is where you'll manage your price lists and products."
@@ -43,13 +43,12 @@ describe('Dashboard Component', () => {
 
     it('has proper heading hierarchy', () => {
       const headings = screen.getAllByRole('heading')
-      expect(headings).toHaveLength(2)
+      expect(headings).toHaveLength(1)
       
       const h1 = screen.getByRole('heading', { level: 1 })
-      const h3 = screen.getByRole('heading', { level: 3 })
       
       expect(h1).toBeInTheDocument()
-      expect(h3).toBeInTheDocument()
+      expect(h1).toHaveTextContent('Price List Manager')
     })
   })
 
