@@ -7,7 +7,7 @@ export type HeadingSize = 'default' | 'large' | 'small'
 export interface HeadingProps {
   level?: HeadingLevel
   size?: HeadingSize
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
 }
 

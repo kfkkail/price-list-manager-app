@@ -14,14 +14,6 @@ const meta: Meta<typeof Table> = {
     }
   },
   argTypes: {
-    striped: {
-      control: { type: 'boolean' },
-      description: 'Whether to show alternating row colors'
-    },
-    hover: {
-      control: { type: 'boolean' },
-      description: 'Whether to show hover effects on rows'
-    },
     className: {
       control: { type: 'text' },
       description: 'Additional CSS classes'
@@ -119,7 +111,7 @@ export const WithActions: Story = {
 // Table without stripes
 export const NoStripes: Story = {
   render: () => (
-    <Table striped={false}>
+    <Table>
       <TableHeader>
         <tr>
           <TableCell header>Name</TableCell>
@@ -158,7 +150,7 @@ export const NoStripes: Story = {
 // Table without hover effects
 export const NoHover: Story = {
   render: () => (
-    <Table hover={false}>
+    <Table>
       <TableHeader>
         <tr>
           <TableCell header>Task</TableCell>

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { render, screen } from '@testing-library/react'
 import { Text } from './Text'
 
@@ -79,7 +79,7 @@ describe('Text', () => {
     render(<Text></Text>)
     const text = screen.getByText('', { selector: 'p' })
     expect(text).toBeInTheDocument()
-    expect(text).toHaveTextContent('')
+    expect(text).toBeEmptyDOMElement()
   })
 
   it('applies dark mode classes correctly', () => {

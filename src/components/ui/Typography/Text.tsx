@@ -4,12 +4,13 @@ import { clsx } from 'clsx'
 export type TextSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl'
 export type TextVariant = 'default' | 'muted' | 'strong' | 'code'
 
-export interface TextProps extends React.HTMLAttributes<HTMLElement> {
+export interface TextProps {
   size?: TextSize
   variant?: TextVariant
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
   as?: keyof JSX.IntrinsicElements
+  [key: string]: any // Allow additional props
 }
 
 const textSizes: Record<TextSize, string> = {

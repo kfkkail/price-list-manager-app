@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { render, screen } from '@testing-library/react'
 import { Heading } from './Heading'
 
@@ -86,7 +86,7 @@ describe('Heading', () => {
     render(<Heading></Heading>)
     const heading = screen.getByRole('heading')
     expect(heading).toBeInTheDocument()
-    expect(heading).toHaveTextContent('')
+    expect(heading).toBeEmptyDOMElement()
   })
 
   it('applies dark mode classes correctly', () => {

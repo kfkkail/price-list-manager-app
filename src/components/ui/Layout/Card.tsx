@@ -9,12 +9,7 @@ export interface CardProps {
   border?: boolean
 }
 
-const shadowClasses = {
-  sm: 'shadow-sm',
-  md: 'shadow',
-  lg: 'shadow-lg',
-  none: ''
-}
+
 
 export const Card: React.FC<CardProps> = ({
   children,
