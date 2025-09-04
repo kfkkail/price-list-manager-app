@@ -20,16 +20,17 @@ export const useTheme = () => {
 
 interface ThemeProviderProps {
   children: React.ReactNode
+  defaultTheme?: Theme
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, defaultTheme = 'system' }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     // Check localStorage first
     const saved = localStorage.getItem('theme') as Theme
     if (saved && ['light', 'dark', 'system'].includes(saved)) {
       return saved
     }
-    return 'system'
+    return defaultTheme
   })
 
   const [isDark, setIsDark] = useState(false)

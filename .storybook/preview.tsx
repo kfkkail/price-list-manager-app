@@ -7,7 +7,7 @@ const preview: Preview = {
   parameters: {},
   decorators: [
     (Story) => (
-      <ThemeProvider>
+      <ThemeProvider defaultTheme='light'>
         <div className="p-4">
           <Story />
         </div>
