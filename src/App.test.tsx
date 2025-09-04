@@ -37,9 +37,9 @@ describe('App Component', () => {
     expect(h1).toBeInTheDocument()
     expect(h1).toHaveTextContent('Price List Manager')
     
-    const h3 = screen.getByRole('heading', { level: 3 })
-    expect(h3).toBeInTheDocument()
-    expect(h3).toHaveTextContent('Welcome to your Dashboard')
+    // The welcome message is rendered as Text component, not as a heading
+    const welcomeText = screen.getByText('Welcome to your Dashboard')
+    expect(welcomeText).toBeInTheDocument()
   })
 
   it('renders with proper routing setup', () => {

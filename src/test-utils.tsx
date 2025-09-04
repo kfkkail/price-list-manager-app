@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ThemeProvider } from './contexts/ThemeContext'
 
 // Create a custom render function that includes providers
 interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
@@ -38,7 +39,9 @@ const AllTheProviders = ({
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </BrowserRouter>
     </QueryClientProvider>
   )
