@@ -22,6 +22,7 @@ export default {
     '!src/main.tsx',
     '!src/index.css',
     '!src/vite-env.d.ts',
+    '!src/**/*.stories.{ts,tsx}',
   ],
   coverageThreshold: {
     global: {

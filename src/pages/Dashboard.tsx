@@ -1,38 +1,38 @@
 import React from 'react'
+import { Container, Heading, ThemeToggle, Text } from '../components/ui'
 
 export const Dashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <Container>
           <div className="flex justify-between items-center py-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
-                Price List Manager
-              </h1>
-              <p className="mt-1 text-sm text-gray-500">
+              <Heading level={1}>Price List Manager</Heading>
+              <Text variant="muted" size="sm">
                 Manage your product pricing efficiently
-              </p>
+              </Text>
             </div>
+            <ThemeToggle />
           </div>
-        </div>
+        </Container>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 flex items-center justify-center">
+      <main className="py-6">
+        <Container>
+          <div className="border-4 border-dashed border-gray-200 dark:border-gray-700 rounded-lg h-96 flex items-center justify-center">
             <div className="text-center">
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <Text className="text-lg font-medium text-gray-900 mb-2">
                 Welcome to your Dashboard
-              </h3>
-              <p className="text-gray-500">
+              </Text>
+              <Text className="text-gray-500">
                 This is where you'll manage your price lists and products.
-              </p>
+              </Text>
             </div>
           </div>
-        </div>
+        </Container>
       </main>
     </div>
   )

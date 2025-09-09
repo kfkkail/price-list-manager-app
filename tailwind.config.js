@@ -6,6 +6,7 @@ export default {
     "./.storybook/**/*.{js,ts,jsx,tsx}",
     "./storybook-static/**/*.{js,ts,jsx,tsx}"
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
