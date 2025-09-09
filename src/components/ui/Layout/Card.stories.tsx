@@ -106,7 +106,6 @@ export const WithAllSections: Story = {
   render: () => (
     <Card>
       <CardHeader>
-        <Text>Card with All Sections</Text>
         <h3 className="text-lg font-semibold">Card with All Sections</h3>
         <p className="text-sm text-gray-500 dark:text-gray-400">This card demonstrates all available sections</p>
       </CardHeader>
