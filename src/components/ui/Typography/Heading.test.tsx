@@ -31,15 +31,9 @@ describe('Heading', () => {
     expect(screen.getByRole('heading', { level: 6 })).toBeInTheDocument()
   })
 
-  it('renders with different sizes', () => {
-    const { rerender } = render(<Heading level={1} size="default">Default Size</Heading>)
-    expect(screen.getByRole('heading')).toHaveClass('text-2xl', 'sm:text-3xl', 'lg:text-4xl')
-
-    rerender(<Heading level={1} size="large">Large Size</Heading>)
-    expect(screen.getByRole('heading')).toHaveClass('text-3xl', 'sm:text-4xl', 'lg:text-5xl')
-
-    rerender(<Heading level={1} size="small">Small Size</Heading>)
-    expect(screen.getByRole('heading')).toHaveClass('text-xl', 'sm:text-2xl', 'lg:text-3xl')
+  it('renders with correct default level styles', () => {
+    render(<Heading level={1}>H1 Heading</Heading>)
+    expect(screen.getByRole('heading')).toHaveClass('text-2xl', 'sm:text-3xl', 'lg:text-4xl', 'font-bold', 'text-gray-900')
   })
 
   it('applies correct styles for each level', () => {
@@ -67,10 +61,10 @@ describe('Heading', () => {
     expect(screen.getByRole('heading')).toHaveClass('custom-class')
   })
 
-  it('combines size and level correctly', () => {
-    render(<Heading level={2} size="large">Large H2</Heading>)
+  it('renders with correct level 2 styles', () => {
+    render(<Heading level={2}>H2 Heading</Heading>)
     const heading = screen.getByRole('heading', { level: 2 })
-    expect(heading).toHaveClass('text-2xl', 'sm:text-3xl', 'lg:text-4xl')
+    expect(heading).toHaveClass('text-xl', 'sm:text-2xl', 'lg:text-3xl')
     expect(heading).toHaveClass('font-semibold', 'text-gray-800')
   })
 

@@ -32,24 +32,10 @@ const meta: Meta<typeof Container> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-// Default container
-export const Default: Story = {
-  args: {
-    children: (
-      <div className="bg-blue-100 dark:bg-blue-900 p-8 rounded-lg text-center">
-        <h2 className="text-xl font-semibold mb-4">Default Container (lg)</h2>
-        <p className="text-gray-600 dark:text-gray-300">
-          This container uses the default large size with responsive padding.
-        </p>
-      </div>
-    )
-  }
-}
-
 // All container sizes
 export const AllSizes: Story = {
   render: () => (
-    <div className="space-y-8">
+    <div className="space-y-8 w-[1200px]">
       <Container size="sm">
         <div className="bg-green-100 dark:bg-green-900 p-6 rounded-lg text-center">
           <h3 className="font-semibold mb-2">Small Container</h3>
@@ -95,56 +81,6 @@ export const AllSizes: Story = {
   }
 }
 
-// Container without padding
-export const NoPadding: Story = {
-  render: () => (
-    <Container padding={false}>
-      <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg text-center">
-        <h3 className="font-semibold mb-4">Container Without Padding</h3>
-        <p className="text-gray-600 dark:text-gray-300">
-          This container has no responsive padding applied.
-        </p>
-      </div>
-    </Container>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Container with padding disabled.'
-      }
-    }
-  }
-}
-
-// Responsive behavior
-export const Responsive: Story = {
-  render: () => (
-    <Container>
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-8 rounded-lg text-white text-center">
-        <h2 className="text-2xl font-bold mb-4">Responsive Container</h2>
-        <p className="mb-4">
-          This container automatically adjusts its padding based on screen size:
-        </p>
-        <div className="text-sm space-y-1">
-          <p>• Mobile: px-4</p>
-          <p>• Small screens: px-6</p>
-          <p>• Large screens: px-8</p>
-        </div>
-        <p className="mt-4 text-blue-100">
-          Resize your browser to see the padding change
-        </p>
-      </div>
-    </Container>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Container demonstrating responsive padding behavior. Resize your browser to see the changes.'
-      }
-    }
-  }
-}
-
 // Nested containers
 export const Nested: Story = {
   render: () => (
@@ -171,29 +107,6 @@ export const Nested: Story = {
     docs: {
       description: {
         story: 'Demonstrating how containers can be nested for complex layouts.'
-      }
-    }
-  }
-}
-
-// Custom styling
-export const CustomStyling: Story = {
-  render: () => (
-    <Container className="bg-gradient-to-br from-pink-100 to-orange-100 dark:from-pink-900 dark:to-orange-900 p-8 rounded-2xl border-2 border-pink-200 dark:border-pink-700">
-      <div className="text-center">
-        <h2 className="text-2xl font-bold text-pink-800 dark:text-pink-200 mb-4">
-          Custom Styled Container
-        </h2>
-        <p className="text-pink-700 dark:text-pink-300">
-          This container has custom background, border, and padding applied via className.
-        </p>
-      </div>
-    </Container>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Container with custom styling applied via className prop.'
       }
     }
   }

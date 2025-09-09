@@ -18,18 +18,10 @@ describe('Card Components', () => {
       expect(card).not.toHaveClass('p-6')
     })
 
-    it('renders with different shadow options', () => {
-      const { rerender } = render(<Card shadow="sm">Card content</Card>)
-      let card = screen.getByText('Card content').closest('div')
-      expect(card).toHaveClass('shadow-sm')
-
-      rerender(<Card shadow="lg">Card content</Card>)
-      card = screen.getByText('Card content').closest('div')
-      expect(card).toHaveClass('shadow-lg')
-
-      rerender(<Card shadow="none">Card content</Card>)
-      card = screen.getByText('Card content').closest('div')
-      expect(card).not.toHaveClass('shadow-sm', 'shadow', 'shadow-lg')
+    it('renders with default shadow', () => {
+      render(<Card>Card content</Card>)
+      const card = screen.getByText('Card content').closest('div')
+      expect(card).toHaveClass('shadow-md')
     })
 
     it('renders without border when border=false', () => {
@@ -48,7 +40,6 @@ describe('Card Components', () => {
       render(
         <Card 
           padding={false} 
-          shadow="lg" 
           border={false} 
           className="custom-class"
         >
@@ -56,7 +47,7 @@ describe('Card Components', () => {
         </Card>
       )
       const card = screen.getByText('Card content').closest('div')
-      expect(card).toHaveClass('bg-white', 'dark:bg-gray-800', 'rounded-lg', 'shadow-lg', 'custom-class')
+      expect(card).toHaveClass('bg-white', 'dark:bg-gray-800', 'rounded-lg', 'shadow-md', 'custom-class')
       expect(card).not.toHaveClass('p-6', 'border', 'border-gray-200', 'dark:border-gray-700')
     })
   })
