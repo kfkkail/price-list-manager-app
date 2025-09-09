@@ -26,8 +26,7 @@ const meta: Meta<typeof Container> = {
       control: { type: 'text' },
       description: 'Additional CSS classes'
     }
-  },
-  tags: ['autodocs']
+  }
 }
 
 export default meta

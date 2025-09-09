@@ -4,7 +4,7 @@ export type { ButtonProps, ButtonVariant, ButtonSize } from './Button/Button'
 
 // Typography
 export { Heading } from './Typography/Heading'
-export type { HeadingProps, HeadingLevel, HeadingSize } from './Typography/Heading'
+export type { HeadingProps, HeadingLevel } from './Typography/Heading'
 export { Text } from './Typography/Text'
 export type { TextProps, TextSize, TextVariant } from './Typography/Text'
 

@@ -5,7 +5,6 @@ export interface CardProps {
   children: React.ReactNode
   className?: string
   padding?: boolean
-  shadow?: 'sm' | 'md' | 'lg' | 'none'
   border?: boolean
 }
 
@@ -15,18 +14,15 @@ export const Card: React.FC<CardProps> = ({
   children,
   className = '',
   padding = true,
-  shadow = 'md',
   border = true
 }) => {
   const paddingClasses = padding ? 'p-6' : ''
-  const shadowClasses = shadow !== 'none' ? `shadow-${shadow}` : ''
   const borderClasses = border ? 'border border-gray-200 dark:border-gray-700' : ''
 
   return (
     <div className={clsx(
-      'bg-white dark:bg-gray-800 rounded-lg',
+      'bg-white dark:bg-gray-800 rounded-lg shadow-md',
       paddingClasses,
-      shadowClasses,
       borderClasses,
       className
     )}>

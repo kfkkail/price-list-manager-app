@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Card, CardHeader, CardBody, CardFooter } from './Card'
 import { Button } from '../Button/Button'
+import { Text } from '../Typography/Text'
+import clsx from 'clsx'
+import { Heading } from '../Typography/Heading'
 
 const meta: Meta<typeof Card> = {
   title: 'UI/Layout/Card',
@@ -18,11 +21,6 @@ const meta: Meta<typeof Card> = {
       control: { type: 'boolean' },
       description: 'Whether to apply default padding'
     },
-    shadow: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg', 'none'],
-      description: 'The shadow level for the card'
-    },
     border: {
       control: { type: 'boolean' },
       description: 'Whether to show a border'
@@ -31,24 +29,75 @@ const meta: Meta<typeof Card> = {
       control: { type: 'text' },
       description: 'Additional CSS classes'
     }
-  },
-  tags: ['autodocs']
+  }
 }
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-// Default card
-export const Default: Story = {
-  args: {
-    children: (
-      <div className="text-center">
-        <h3 className="text-lg font-semibold mb-2">Default Card</h3>
-        <p className="text-gray-600 dark:text-gray-300">
-          This card uses all default settings: medium shadow, border, and padding.
-        </p>
+const AllVariantsTemplate: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <div className={clsx("space-y-8", className)}>
+      <div>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Border & Padding Options</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card border={true} padding={true}>
+            <CardBody>
+              <Heading>With Border & Padding</Heading>
+              <Text>Default configuration</Text>
+            </CardBody>
+          </Card>
+          
+          <Card border={false} padding={true}>
+            <CardBody>
+              <Heading>No Border, With Padding</Heading>
+              <Text>Clean look with padding</Text>
+            </CardBody>
+          </Card>
+          
+          <Card border={true} padding={false}>
+            <CardBody>
+              <Heading>With Border, No Padding</Heading>
+              <Text>Custom content control</Text>
+            </CardBody>
+          </Card>
+          
+          <Card border={false} padding={false}>
+            <CardBody>
+              <Heading>No Border, No Padding</Heading>
+              <Text>Minimal styling</Text>
+            </CardBody>
+          </Card>
+        </div>
       </div>
-    )
+    </div>
+  )
+}
+
+// All variants showcase - comprehensive card configurations
+export const AllVariantsLight: Story = {
+  render: () => (
+     <AllVariantsTemplate className="space-y-8 light bg-gray-50 p-4 rounded-lg" />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'All card variants showing different shadow levels, border options, and padding configurations.'
+      }
+    }
+  }
+}
+
+export const AllVariantsDark: Story = {
+  render: () => (
+     <AllVariantsTemplate className="space-y-8 dark bg-gray-900 p-4 rounded-lg" />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'All card variants showing different shadow levels, border options, and padding configurations.'
+      }
+    }
   }
 }
 
@@ -57,6 +106,7 @@ export const WithAllSections: Story = {
   render: () => (
     <Card>
       <CardHeader>
+        <Text>Card with All Sections</Text>
         <h3 className="text-lg font-semibold">Card with All Sections</h3>
         <p className="text-sm text-gray-500 dark:text-gray-400">This card demonstrates all available sections</p>
       </CardHeader>
@@ -82,223 +132,6 @@ export const WithAllSections: Story = {
     docs: {
       description: {
         story: 'Card with header, body, and footer sections all properly structured.'
-      }
-    }
-  }
-}
-
-// Shadow variants
-export const ShadowVariants: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <Card shadow="sm">
-        <CardBody>
-          <h3 className="font-semibold mb-2">Small Shadow</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">shadow-sm</p>
-        </CardBody>
-      </Card>
-      
-      <Card shadow="md">
-        <CardBody>
-          <h3 className="font-semibold mb-2">Medium Shadow (Default)</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">shadow</p>
-        </CardBody>
-      </Card>
-      
-      <Card shadow="lg">
-        <CardBody>
-          <h3 className="font-semibold mb-2">Large Shadow</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">shadow-lg</p>
-        </CardBody>
-      </Card>
-      
-      <Card shadow="none">
-        <CardBody>
-          <h3 className="font-semibold mb-2">No Shadow</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">shadow-none</p>
-        </CardBody>
-      </Card>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'All shadow variants displayed together for comparison.'
-      }
-    }
-  }
-}
-
-// Border options
-export const BorderOptions: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <Card border={true}>
-        <CardBody>
-          <h3 className="font-semibold mb-2">With Border (Default)</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">border border-gray-200 dark:border-gray-700</p>
-        </CardBody>
-      </Card>
-      
-      <Card border={false}>
-        <CardBody>
-          <h3 className="font-semibold mb-2">Without Border</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">No border applied</p>
-        </CardBody>
-      </Card>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Cards with and without borders for comparison.'
-      }
-    }
-  }
-}
-
-// Padding options
-export const PaddingOptions: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <Card padding={true}>
-        <CardBody>
-          <h3 className="font-semibold mb-2">With Padding (Default)</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">Default p-6 padding applied</p>
-        </CardBody>
-      </Card>
-      
-      <Card padding={false}>
-        <CardBody>
-          <h3 className="font-semibold mb-2">Without Padding</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300">No padding applied</p>
-        </CardBody>
-      </Card>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Cards with and without default padding for comparison.'
-      }
-    }
-  }
-}
-
-// Card without header border
-export const NoHeaderBorder: Story = {
-  render: () => (
-    <Card>
-      <CardHeader border={false}>
-        <h3 className="text-lg font-semibold">No Header Border</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">Header without bottom border</p>
-      </CardHeader>
-      <CardBody>
-        <p className="text-gray-600 dark:text-gray-300">
-          This card header has no border separating it from the body.
-        </p>
-      </CardBody>
-    </Card>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Card with header border disabled.'
-      }
-    }
-  }
-}
-
-// Card without footer border
-export const NoFooterBorder: Story = {
-  render: () => (
-    <Card>
-      <CardBody>
-        <p className="text-gray-600 dark:text-gray-300">
-          This card body has no border separating it from the footer.
-        </p>
-      </CardBody>
-      <CardFooter border={false}>
-        <div className="flex justify-between items-center w-full">
-          <span className="text-sm text-gray-500 dark:text-gray-400">No border above</span>
-          <Button size="sm">Action</Button>
-        </div>
-      </CardFooter>
-    </Card>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Card with footer border disabled.'
-      }
-    }
-  }
-}
-
-// Interactive card
-export const Interactive: Story = {
-  render: () => (
-    <Card className="hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-      <CardHeader>
-        <h3 className="text-lg font-semibold">Interactive Card</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">Hover to see shadow effect</p>
-      </CardHeader>
-      <CardBody>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
-          This card demonstrates interactive behavior with hover effects and smooth transitions.
-        </p>
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">Feature 1</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">Feature 2</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">Feature 3</span>
-          </div>
-        </div>
-      </CardBody>
-      <CardFooter>
-        <Button variant="primary" className="w-full">Get Started</Button>
-      </CardFooter>
-    </Card>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Interactive card with hover effects and smooth transitions.'
-      }
-    }
-  }
-}
-
-// Custom styling
-export const CustomStyling: Story = {
-  render: () => (
-    <Card className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 border-blue-200 dark:border-blue-700">
-      <CardHeader className="border-blue-200 dark:border-blue-700">
-        <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-200">Custom Styled Card</h3>
-        <p className="text-sm text-blue-600 dark:text-blue-300">With custom colors and gradients</p>
-      </CardHeader>
-      <CardBody>
-        <p className="text-blue-700 dark:text-blue-300">
-          This card demonstrates custom styling applied via className props.
-          You can override any default styles to create unique designs.
-        </p>
-      </CardBody>
-      <CardFooter className="border-blue-200 dark:border-blue-700">
-        <Button variant="primary" className="bg-blue-600 hover:bg-blue-700">Custom Action</Button>
-      </CardFooter>
-    </Card>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Card with custom styling applied via className props.'
       }
     }
   }

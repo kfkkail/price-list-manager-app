@@ -35,83 +35,11 @@ const meta: Meta<typeof Button> = {
       control: { type: 'text' },
       description: 'The button text content'
     }
-  },
-  tags: ['autodocs']
+  }
 }
 
 export default meta
 type Story = StoryObj<typeof meta>
-
-// Default button
-export const Default: Story = {
-  args: {
-    children: 'Button'
-  }
-}
-
-// Primary variant
-export const Primary: Story = {
-  args: {
-    variant: 'primary',
-    children: 'Primary Button'
-  }
-}
-
-// Secondary variant
-export const Secondary: Story = {
-  args: {
-    variant: 'secondary',
-    children: 'Secondary Button'
-  }
-}
-
-// Danger variant
-export const Danger: Story = {
-  args: {
-    variant: 'danger',
-    children: 'Delete'
-  }
-}
-
-// Ghost variant
-export const Ghost: Story = {
-  args: {
-    variant: 'ghost',
-    children: 'Ghost Button'
-  }
-}
-
-// Small size
-export const Small: Story = {
-  args: {
-    size: 'sm',
-    children: 'Small Button'
-  }
-}
-
-// Large size
-export const Large: Story = {
-  args: {
-    size: 'lg',
-    children: 'Large Button'
-  }
-}
-
-// Disabled state
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    children: 'Disabled Button'
-  }
-}
-
-// Loading state
-export const Loading: Story = {
-  args: {
-    loading: true,
-    children: 'Loading...'
-  }
-}
 
 // All variants showcase
 export const AllVariants: Story = {
@@ -150,25 +78,51 @@ export const AllSizes: Story = {
   }
 }
 
-// Interactive example
-export const Interactive: Story = {
-  render: () => {
-    const handleClick = () => alert('Button clicked!')
-    return (
-      <div className="space-y-4">
-        <Button onClick={handleClick} variant="primary">
-          Click Me
-        </Button>
-        <p className="text-sm text-gray-600">
-          Click the button above to see an alert
-        </p>
+// All states showcase - comprehensive state coverage
+export const AllStates: Story = {
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Primary Variant</h3>
+        <div className="flex flex-wrap gap-4">
+          <Button variant="primary">Normal</Button>
+          <Button variant="primary" disabled>Disabled</Button>
+          <Button variant="primary" loading>Loading</Button>
+        </div>
       </div>
-    )
-  },
+      
+      <div>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Secondary Variant</h3>
+        <div className="flex flex-wrap gap-4">
+          <Button variant="secondary">Normal</Button>
+          <Button variant="secondary" disabled>Disabled</Button>
+          <Button variant="secondary" loading>Loading</Button>
+        </div>
+      </div>
+      
+      <div>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Danger Variant</h3>
+        <div className="flex flex-wrap gap-4">
+          <Button variant="danger">Normal</Button>
+          <Button variant="danger" disabled>Disabled</Button>
+          <Button variant="danger" loading>Loading</Button>
+        </div>
+      </div>
+      
+      <div>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Ghost Variant</h3>
+        <div className="flex flex-wrap gap-4">
+          <Button variant="ghost">Normal</Button>
+          <Button variant="ghost" disabled>Disabled</Button>
+          <Button variant="ghost" loading>Loading</Button>
+        </div>
+      </div>
+    </div>
+  ),
   parameters: {
     docs: {
       description: {
-        story: 'An interactive button that shows an alert when clicked.'
+        story: 'Comprehensive state coverage showing all variants in normal, disabled, and loading states.'
       }
     }
   }

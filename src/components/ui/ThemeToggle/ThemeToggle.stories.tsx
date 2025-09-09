@@ -11,101 +11,40 @@ const meta: Meta<typeof ThemeToggle> = {
         component: 'A theme toggle component that allows users to switch between light, dark, and system themes. Features a dropdown menu with smooth animations and proper accessibility.'
       }
     }
-  },
-  tags: ['autodocs'],
+  }
 }
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-// Default theme toggle
-export const Default: Story = {
+// All variants showcase - comprehensive theme toggle configurations
+export const AllVariants: Story = {
   render: () => (
-    <div className="p-8 bg-white dark:bg-gray-900 rounded-lg">
-      <ThemeToggle />
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Default theme toggle button with dropdown functionality.'
-      }
-    }
-  }
-}
+    <div className="space-y-8">
+      <div>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Default Theme Toggle</h3>
+        <div className="p-8 bg-white dark:bg-gray-900 rounded-lg">
+          <ThemeToggle />
+        </div>
+      </div>
 
-// In header context
-export const InHeader: Story = {
-  render: () => (
-    <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4">
-      <div className="flex justify-between items-center">
-        <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-          App Header
-        </h1>
-        <ThemeToggle />
+      <div>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">In Header Context</h3>
+        <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4">
+          <div className="flex justify-between items-center">
+            <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              App Header
+            </h1>
+            <ThemeToggle />
+          </div>
+        </div>
       </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Theme toggle positioned in a typical header layout.'
-      }
-    }
-  }
-}
-
-// Multiple toggles
-export const MultipleToggles: Story = {
-  render: () => (
-    <div className="space-y-4 p-8 bg-white dark:bg-gray-900 rounded-lg">
-      <div className="flex items-center justify-between">
-        <span className="text-gray-700 dark:text-gray-300">Primary toggle:</span>
-        <ThemeToggle />
-      </div>
-      <div className="flex items-center justify-between">
-        <span className="text-gray-700 dark:text-gray-300">Secondary toggle:</span>
-        <ThemeToggle />
-      </div>
-      <div className="flex items-center justify-between">
-        <span className="text-gray-700 dark:text-gray-300">Tertiary toggle:</span>
-        <ThemeToggle />
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Multiple theme toggles demonstrating that they all work independently and share the same theme state.'
-      }
-    }
-  }
-}
-
-// Different backgrounds
-export const DifferentBackgrounds: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <div className="p-6 bg-white rounded-lg border">
-        <h3 className="font-semibold mb-4">Light Background</h3>
-        <ThemeToggle />
-      </div>
-      
-      <div className="p-6 bg-gray-900 rounded-lg">
-        <h3 className="font-semibold mb-4 text-white">Dark Background</h3>
-        <ThemeToggle />
-      </div>
-      
-      <div className="p-6 bg-blue-100 dark:bg-blue-900 rounded-lg">
-        <h3 className="font-semibold mb-4 text-blue-800 dark:text-blue-200">Colored Background</h3>
-        <ThemeToggle />
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Theme toggle on different background colors to show contrast and visibility.'
+        story: 'All theme toggle variants showing different contexts, layouts, and background configurations.'
       }
     }
   }
@@ -153,136 +92,3 @@ export const InteractiveDemo: Story = {
     }
   }
 }
-
-// Accessibility showcase
-export const Accessibility: Story = {
-  render: () => (
-    <div className="p-8 bg-white dark:bg-gray-900 rounded-lg">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-        Accessibility Features
-      </h2>
-      
-      <div className="space-y-4">
-        <div className="flex items-center space-x-4">
-          <ThemeToggle />
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              <strong>Keyboard Navigation:</strong> Tab to focus, Enter/Space to open, Escape to close
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              <strong>Screen Reader:</strong> Proper ARIA labels and descriptions
-            </p>
-          </div>
-        </div>
-        
-        <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-          <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2">Accessibility Checklist</h3>
-          <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-            <li>✅ Proper ARIA labels and descriptions</li>
-            <li>✅ Keyboard navigation support</li>
-            <li>✅ Focus management</li>
-            <li>✅ Screen reader compatibility</li>
-            <li>✅ High contrast support</li>
-            <li>✅ Semantic HTML structure</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Demonstrating the accessibility features of the theme toggle component.'
-      }
-    }
-  }
-}
-
-// Responsive behavior
-export const Responsive: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
-        <h3 className="font-semibold mb-4 text-gray-900 dark:text-gray-100">Mobile Layout</h3>
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-600 dark:text-gray-400">Theme:</span>
-          <ThemeToggle />
-        </div>
-      </div>
-      
-      <div className="p-6 bg-white dark:bg-gray-900 rounded-lg">
-        <h3 className="font-semibold mb-4 text-gray-900 dark:text-gray-100">Tablet Layout</h3>
-        <div className="flex justify-between items-center">
-          <span className="text-base text-gray-600 dark:text-gray-400">Select Theme:</span>
-          <ThemeToggle />
-        </div>
-      </div>
-      
-      <div className="p-8 bg-white dark:bg-gray-900 rounded-lg">
-        <h3 className="font-semibold mb-4 text-gray-900 dark:text-gray-100">Desktop Layout</h3>
-        <div className="flex justify-between items-center">
-          <span className="text-lg text-gray-600 dark:text-gray-400">Choose Your Theme:</span>
-          <ThemeToggle />
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Theme toggle in different responsive layouts and sizes.'
-      }
-    }
-  }
-}
-
-// Theme switcher demonstration
-export const ThemeSwitcher: Story = {
-  render: () => (
-    <div className="p-8 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-          Theme Switching Demo
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400">
-          Use the Storybook theme controls to switch between light, dark, and system themes
-        </p>
-      </div>
-      
-      <div className="flex justify-center mb-6">
-        <ThemeToggle />
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Sample Card</h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm">
-            This card demonstrates theme-aware styling with proper contrast.
-          </p>
-        </div>
-        
-        <div className="bg-white dark:bg-gray-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Another Card</h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm">
-            Notice how borders and backgrounds adapt to the selected theme.
-          </p>
-        </div>
-        
-        <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
-          <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Colored Card</h3>
-          <p className="text-blue-700 dark:text-blue-300 text-sm">
-            Even colored elements maintain proper contrast in both themes.
-          </p>
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Demonstrates how the entire interface adapts to theme changes. Use the Storybook theme controls in the toolbar to switch between light, dark, and system themes.'
-      }
-    }
-  }
-}
-
