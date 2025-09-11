@@ -2,6 +2,10 @@
 export { Button } from './Button/Button'
 export type { ButtonProps, ButtonVariant, ButtonSize } from './Button/Button'
 
+// Input
+export { Input } from './Input/Input'
+export type { InputProps, InputVariant, InputSize } from './Input/Input'
+
 // Typography
 export { Heading } from './Typography/Heading'
 export type { HeadingProps, HeadingLevel } from './Typography/Heading'
