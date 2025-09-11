@@ -2,6 +2,14 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  globals: {
+    'import.meta': {
+      env: {
+        VITE_API_BASE_URL: '/api',
+        VITE_API_TIMEOUT: '10000',
+      }
+    }
+  },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',

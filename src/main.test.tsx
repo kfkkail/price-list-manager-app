@@ -12,6 +12,40 @@ jest.mock('react-dom/client', () => ({
   })),
 }))
 
+// Mock the HTTP client to avoid import.meta.env issues
+jest.mock('./services/httpClient', () => ({
+  httpClient: {
+    get: jest.fn(),
+    post: jest.fn(),
+    put: jest.fn(),
+    patch: jest.fn(),
+    delete: jest.fn(),
+    setAuthToken: jest.fn(),
+    clearAuthToken: jest.fn(),
+    getAuthToken: jest.fn(),
+  },
+}))
+
+// Mock the auth service
+jest.mock('./services/authService', () => ({
+  authService: {
+    sendVerificationCode: jest.fn(),
+    verifyCode: jest.fn(),
+    checkAuthStatus: jest.fn().mockResolvedValue({ isAuthenticated: false }),
+    isAuthenticated: jest.fn().mockReturnValue(false),
+    getAuthToken: jest.fn().mockReturnValue(null),
+  },
+}))
+
+// Mock toast service
+jest.mock('./services/toastService', () => ({
+  toastService: {
+    success: jest.fn(),
+    error: jest.fn(),
+  },
+  Toaster: () => null,
+}))
+
 describe('Main Entry Point', () => {
   it('can import main.tsx without errors', () => {
     // This test verifies that the main.tsx file can be imported
