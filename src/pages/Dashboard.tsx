@@ -1,7 +1,19 @@
 import React from 'react'
-import { Container, Heading, ThemeToggle, Text } from '../components/ui'
+import { Container, Heading, ThemeToggle, Text, Button } from '../components/ui'
+import { useAuth } from '../hooks'
 
 export const Dashboard: React.FC = () => {
+  const { user, logout, isLoading } = useAuth()
+
+  const handleLogout = async () => {
+    try {
+      await logout()
+    } catch (error) {
+      // Error is handled by the auth context
+      console.error('Logout failed:', error)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
@@ -13,8 +25,23 @@ export const Dashboard: React.FC = () => {
               <Text variant="muted" size="sm">
                 Manage your product pricing efficiently
               </Text>
+              {user && (
+                <Text variant="muted" size="sm" className="mt-1">
+                  Welcome back, {user.email}
+                </Text>
+              )}
             </div>
-            <ThemeToggle />
+            <div className="flex items-center space-x-3">
+              <ThemeToggle />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleLogout}
+                loading={isLoading}
+              >
+                Logout
+              </Button>
+            </div>
           </div>
         </Container>
       </header>

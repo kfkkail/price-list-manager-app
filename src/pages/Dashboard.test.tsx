@@ -3,6 +3,58 @@ import { screen } from '@testing-library/react'
 import { render } from '../test-utils'
 import { Dashboard } from './Dashboard'
 
+// Mock the HTTP client to avoid import.meta.env issues
+jest.mock('../services/httpClient', () => ({
+  httpClient: {
+    get: jest.fn(),
+    post: jest.fn(),
+    put: jest.fn(),
+    patch: jest.fn(),
+    delete: jest.fn(),
+    setAuthToken: jest.fn(),
+    clearAuthToken: jest.fn(),
+    getAuthToken: jest.fn(),
+  },
+}))
+
+// Mock the auth service
+jest.mock('../services/authService', () => ({
+  authService: {
+    sendVerificationCode: jest.fn(),
+    verifyCode: jest.fn(),
+    checkAuthStatus: jest.fn().mockResolvedValue({ isAuthenticated: false }),
+    isAuthenticated: jest.fn().mockReturnValue(false),
+    getAuthToken: jest.fn().mockReturnValue(null),
+  },
+}))
+
+// Mock toast service
+jest.mock('../services/toastService', () => ({
+  toastService: {
+    success: jest.fn(),
+    error: jest.fn(),
+  },
+  Toaster: () => null,
+}))
+
+// Mock the auth context
+const mockAuthContext = {
+  user: { id: '1', email: 'test@example.com' },
+  isAuthenticated: true,
+  isLoading: false,
+  isInitialized: true,
+  login: jest.fn(),
+  verifyCode: jest.fn(),
+  logout: jest.fn(),
+  refreshProfile: jest.fn(),
+  checkAuthStatus: jest.fn(),
+}
+
+jest.mock('../contexts/AuthContext', () => ({
+  useAuth: () => mockAuthContext,
+  AuthProvider: ({ children }: { children: React.ReactNode }) => children,
+}))
+
 describe('Dashboard Component', () => {
   beforeEach(() => {
     render(<Dashboard />)

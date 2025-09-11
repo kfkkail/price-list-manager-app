@@ -9,6 +9,23 @@
     --color-text-primary: 17 24 39;
     --color-text-secondary: 107 114 128;
     --color-border: 229 231 235;
+    
+    /* Toast colors - Light mode */
+    --toast-success-bg: #F0FDF4;
+    --toast-success-text: #166534;
+    --toast-success-border: #BBF7D0;
+    --toast-error-bg: #FEF2F2;
+    --toast-error-text: #991B1B;
+    --toast-error-border: #FECACA;
+    --toast-warning-bg: #FFFBEB;
+    --toast-warning-text: #92400E;
+    --toast-warning-border: #FDE68A;
+    --toast-info-bg: #EFF6FF;
+    --toast-info-text: #1E40AF;
+    --toast-info-border: #DBEAFE;
+    --toast-loading-bg: #F9FAFB;
+    --toast-loading-text: #374151;
+    --toast-loading-border: #E5E7EB;
   }
 
   .dark {
@@ -17,6 +34,23 @@
     --color-text-primary: 249 250 251;
     --color-text-secondary: 156 163 175;
     --color-border: 55 65 81;
+    
+    /* Toast colors - Dark mode */
+    --toast-success-bg: #14532D;
+    --toast-success-text: #BBF7D0;
+    --toast-success-border: #16A34A;
+    --toast-error-bg: #7F1D1D;
+    --toast-error-text: #FECACA;
+    --toast-error-border: #DC2626;
+    --toast-warning-bg: #78350F;
+    --toast-warning-text: #FDE68A;
+    --toast-warning-border: #D97706;
+    --toast-info-bg: #1E3A8A;
+    --toast-info-text: #DBEAFE;
+    --toast-info-border: #2563EB;
+    --toast-loading-bg: #374151;
+    --toast-loading-text: #E5E7EB;
+    --toast-loading-border: #6B7280;
   }
 
   * {
