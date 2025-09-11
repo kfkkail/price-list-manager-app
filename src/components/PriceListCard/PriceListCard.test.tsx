@@ -81,7 +81,7 @@ describe('PriceListCard', () => {
   // Variant tests
   describe('Variants', () => {
     it('renders compact variant correctly', () => {
-      const { container } = render(
+      render(
         <PriceListCard
           priceList={mockPriceList}
           variant="compact"
@@ -295,7 +295,10 @@ describe('PriceListCard', () => {
         />
       )
       
-      expect(screen.getByText(/Updated/)).toBeInTheDocument()
+      // Look for the badge specifically by finding all elements and checking for the badge
+      const badges = screen.getAllByText('Recently Updated')
+      const badgeElement = badges.find(el => el.closest('.bg-cyan-100'))
+      expect(badgeElement).toBeInTheDocument()
     })
 
     it('does not show badges for old price lists', () => {
@@ -323,11 +326,12 @@ describe('PriceListCard', () => {
           priceList={mockPriceList}
           enableSelection={false}
           onView={mockOnView}
+          data-testid="price-list-card"
         />
       )
       
-      const cardElement = screen.getByText('Test Price List').closest('[data-testid]')
-      fireEvent.click(cardElement!)
+      const cardElement = screen.getByTestId('price-list-card')
+      fireEvent.click(cardElement)
       
       expect(mockOnView).toHaveBeenCalledWith(mockPriceList)
     })
@@ -341,11 +345,12 @@ describe('PriceListCard', () => {
           enableSelection={true}
           selected={false}
           onSelect={mockOnSelect}
+          data-testid="price-list-card"
         />
       )
       
-      const cardElement = screen.getByText('Test Price List').closest('[data-testid]')
-      fireEvent.click(cardElement!)
+      const cardElement = screen.getByTestId('price-list-card')
+      fireEvent.click(cardElement)
       
       expect(mockOnSelect).toHaveBeenCalledWith(true)
     })

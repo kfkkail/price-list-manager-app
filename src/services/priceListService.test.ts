@@ -1,30 +1,28 @@
 import { PriceListService } from './priceListService'
-import { HttpClient } from './httpClient'
 import type { PriceList, CreatePriceListRequest, ApiResponse } from '../types'
 
-// Mock the HttpClient
-jest.mock('./httpClient')
+// Mock the httpClient
+jest.mock('./httpClient', () => ({
+  httpClient: {
+    get: jest.fn(),
+    post: jest.fn(),
+    put: jest.fn(),
+    delete: jest.fn(),
+    setAuthToken: jest.fn(),
+    removeAuthToken: jest.fn(),
+  }
+}))
+
+import { httpClient } from './httpClient'
+const mockHttpClient = httpClient as jest.Mocked<typeof httpClient>
 
 describe('PriceListService', () => {
   let service: PriceListService
-  let mockHttpClient: jest.Mocked<HttpClient>
 
   beforeEach(() => {
     // Create a fresh instance for each test
     service = new PriceListService()
-    
-    // Mock the httpClient instance
-    mockHttpClient = {
-      get: jest.fn(),
-      post: jest.fn(),
-      put: jest.fn(),
-      delete: jest.fn(),
-      setAuthToken: jest.fn(),
-      removeAuthToken: jest.fn(),
-    } as unknown as jest.Mocked<HttpClient>
-    
-    // Replace the httpClient import with our mock
-    ;(service as any).httpClient = mockHttpClient
+    jest.clearAllMocks()
   })
 
   afterEach(() => {

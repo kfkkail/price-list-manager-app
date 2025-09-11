@@ -6,6 +6,8 @@ export interface CardProps {
   className?: string
   padding?: boolean
   border?: boolean
+  onClick?: (e: React.MouseEvent) => void
+  'data-testid'?: string
 }
 
 
@@ -14,18 +16,25 @@ export const Card: React.FC<CardProps> = ({
   children,
   className = '',
   padding = true,
-  border = true
+  border = true,
+  onClick,
+  'data-testid': testId
 }) => {
   const paddingClasses = padding ? 'p-6' : ''
   const borderClasses = border ? 'border border-gray-200 dark:border-gray-700' : ''
 
   return (
-    <div className={clsx(
-      'bg-white dark:bg-gray-800 rounded-lg shadow-md',
-      paddingClasses,
-      borderClasses,
-      className
-    )}>
+    <div 
+      className={clsx(
+        'bg-white dark:bg-gray-800 rounded-lg shadow-md',
+        paddingClasses,
+        borderClasses,
+        onClick && 'cursor-pointer',
+        className
+      )}
+      onClick={onClick}
+      data-testid={testId}
+    >
       {children}
     </div>
   )

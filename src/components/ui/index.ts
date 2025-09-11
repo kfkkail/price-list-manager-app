@@ -20,3 +20,10 @@ export type { CardProps } from './Layout/Card'
 
 // Theme
 export { ThemeToggle } from './ThemeToggle/ThemeToggle'
+
+// Data Display
+export { Badge } from './DataDisplay/Badge'
+export type { BadgeProps, BadgeVariant, BadgeSize } from './DataDisplay/Badge'
+
+export { Tooltip } from './DataDisplay/Tooltip'
+export type { TooltipProps, TooltipPlacement } from './DataDisplay/Tooltip'
